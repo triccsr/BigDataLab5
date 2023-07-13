@@ -49,7 +49,7 @@ public class PageRankWork {
             String[] words=info.split(",+");
             int N=Integer.parseInt(words[1]);
             ans=(1.0-D)/(double)N+D*ans;
-            StringBuilder sb=new StringBuilder(",,,"+Double.toString(ans)+",,"+N+",,");
+            StringBuilder sb=new StringBuilder(",,,"+ ans +",,"+N+",,");
             for(int i=2;i< words.length;++i){
                 sb.append(words[i]);
                 sb.append(',');
