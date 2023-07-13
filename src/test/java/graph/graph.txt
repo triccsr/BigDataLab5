@@ -1,0 +1,7 @@
+Aurthor Weasley [Molly Weasley,0.3333333333333333|Ron Weasley,0.3333333333333333|Harry Potter,0.3333333333333333]
+Dobby   [Hermione Granger,0.5000000000000000|Harry Potter,0.5000000000000000]
+Harry Potter    [Professor Severus Snape,0.2142857142857143|Ron Weasley,0.3571428571428572|Molly Weasley,0.0714285714285714|Dobby,0.0714285714285714|Hermione Granger,0.2142857142857143|Aurthor Weasley,0.0714285714285714]
+Hermione Granger        [Ron Weasley,0.2857142857142857|Professor Severus Snape,0.1428571428571429|Dobby,0.1428571428571429|Harry Potter,0.4285714285714286]
+Molly Weasley   [Ron Weasley,0.3333333333333333|Harry Potter,0.3333333333333333|Aurthor Weasley,0.3333333333333333]
+Professor Severus Snape [Ron Weasley,0.3333333333333333|Hermione Granger,0.1666666666666667|Harry Potter,0.5000000000000000]
+Ron Weasley     [Professor Severus Snape,0.1818181818181818|Molly Weasley,0.0909090909090909|Hermione Granger,0.1818181818181818|Harry Potter,0.4545454545454545|Aurthor Weasley,0.0909090909090909]
