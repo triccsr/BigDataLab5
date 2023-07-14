@@ -34,10 +34,10 @@ public class PageRankInit {
             for(String s:arrayList){
                 String[] personEdges=s.split("\\s\\[",2);
                 String[] words=personEdges[1].split("[\\|\\],]+");
-                StringBuilder sb=new StringBuilder(",,,"+Double.toString(1.0/(double)personCount));
-                sb.append(",,");
-                sb.append(Integer.toString(personCount));
-                sb.append(",,");
+                StringBuilder sb=new StringBuilder(";"+Double.toString(1.0/(double)personCount));
+                sb.append(";");
+                sb.append(personCount);
+                sb.append(";");
                 for(int i=0;i<words.length;++i){
                     sb.append(words[i]);
                     sb.append(",");

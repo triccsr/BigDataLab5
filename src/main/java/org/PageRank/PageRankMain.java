@@ -17,8 +17,8 @@ public class PageRankMain {
     public static class PRSortMapper extends Mapper<Object, Text, DoubleWritable,Text> {
         @Override
         protected void map(Object key, Text value, Context context) throws IOException, InterruptedException {
-            String[] personInfo=value.toString().split("\\s*,+",2);
-            String[] words=personInfo[1].split(",+");
+            String[] personInfo=value.toString().split("\\s*[,;]+",2);
+            String[] words=personInfo[1].split("[,;]+");
             double pr=Double.parseDouble(words[0]);
             context.write(new DoubleWritable(-pr),new Text(personInfo[0]));
         }

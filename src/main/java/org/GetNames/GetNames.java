@@ -169,7 +169,9 @@ public class GetNames {
                 sb.append(personCount.getOrDefault(person, 0));
                 sb.append(";");
             }
-            context.write(new Text(),new Text(sb.toString()));
+            if(sb.toString().length()>0) {
+                context.write(new Text(), new Text(sb.toString()));
+            }
         }
 
     }

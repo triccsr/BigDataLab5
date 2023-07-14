@@ -22,13 +22,13 @@ public class FeatureExtraction {
   public static class FeatureExtractionMapper extends Mapper<LongWritable, Text, Text, LongWritable> {
     @Override
     protected void map(LongWritable key, Text value, Mapper<LongWritable, Text, Text, LongWritable>.Context context) throws IOException, InterruptedException {
-      String[] nameAppearList = value.toString().split(";");
+      String[] nameAppearList = value.toString().split(";\\s*");
       StringBuilder stringBuilder = new StringBuilder();
-      for (int i = 0; i < nameAppearList.length - 1; i++) {
+      for (int i = 0; i < nameAppearList.length; i++) {
         String[] name1AndTimes = nameAppearList[i].split(",");
         String name1 = name1AndTimes[0];
         Long t1 = Long.parseLong(name1AndTimes[1]);
-        for (int j = 0; j < nameAppearList.length - 1; j++) {
+        for (int j = 0; j < nameAppearList.length; j++) {
           if (j == i)
             continue;
           String[] name2AndTimes = nameAppearList[j].split(",");

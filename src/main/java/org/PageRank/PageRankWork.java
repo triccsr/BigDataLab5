@@ -20,8 +20,8 @@ public class PageRankWork {
     public static class PRWorkMapper extends Mapper<Object, Text, PersonWritableComparable, Text> {
         @Override
         protected void map(Object key, Text value, Context context) throws IOException, InterruptedException {
-            String[] personInfo=value.toString().split("\\s*,+",2);
-            String[] words=personInfo[1].split(",+");
+            String[] personInfo=value.toString().split("\\s*[,;]+",2);
+            String[] words=personInfo[1].split("[,;]+");
             double pr=Double.parseDouble(words[0]);
             //words[1]=N
             for(int i=2;i<words.length;i+=2){
@@ -46,10 +46,10 @@ public class PageRankWork {
                     info=t.toString();
                 }
             }
-            String[] words=info.split(",+");
+            String[] words=info.split("[,;]+");
             int N=Integer.parseInt(words[1]);
             ans=(1.0-D)/(double)N+D*ans;
-            StringBuilder sb=new StringBuilder(",,,"+ ans +",,"+N+",,");
+            StringBuilder sb=new StringBuilder(";"+ ans +";"+N+";");
             for(int i=2;i< words.length;++i){
                 sb.append(words[i]);
                 sb.append(',');
