@@ -17,16 +17,25 @@
 ### 你们两个一个写任务5,一个拆任务123以及写报告？
 
 ## 运行方式
-
-#### 任务123：
-
+#### 任务1
 在hdfs下跑：
 
-yarn jar xxx.jar org.GraphFileGen.GraphFileGen PERSONLIST_TXT_PATH YOUR_INPUT_FOLDER_PATH YOUR_OUTPUT_PATH
+yarn jar xxx.jar org.GetNames.GetNames PATH/PERSON_LIST_TXT YOUR_INPUT_FOLDER_PATH YOUR_OUTPUT_PATH
 
 在本机跑：
 
-java org.GraphFileGen.GraphFileGen PERSONLIST_TXT_PATH YOUR_INPUT_FOLDER_PATH YOUR_OUTPUT_PATH
+java org.GetNames.GetNames PATH/PERSON_LIST_TXT YOUR_INPUT_FOLDER_PATH YOUR_OUTPUT_PATH
+
+
+#### 任务3：
+
+在hdfs下跑：
+
+yarn jar xxx.jar org.GraphFileGen.GraphFileGen YOUR_INPUT_FOLDER_PATH YOUR_OUTPUT_PATH
+
+在本机跑：
+
+java org.GraphFileGen.GraphFileGen YOUR_INPUT_FOLDER_PATH YOUR_OUTPUT_PATH
 
 #### 任务4
 
