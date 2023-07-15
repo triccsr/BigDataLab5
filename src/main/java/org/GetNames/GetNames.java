@@ -31,12 +31,12 @@ public class GetNames {
             // 将 NameList 装入本地的内存数据中
             try {
                 Configuration conf=context.getConfiguration();
-                URI[] cacheFiles= DistributedCache.getCacheFiles(conf);
+                Path[] cacheFiles= context.getLocalCacheFiles();
                 //System.out.println(cacheFiles);
                 if (cacheFiles != null && cacheFiles.length > 0) {
                     String line;
 
-                    try (BufferedReader joinReader = new BufferedReader(new FileReader(cacheFiles[0].getPath()))) {
+                    try (BufferedReader joinReader = new BufferedReader(new FileReader(cacheFiles[0].toString()))) {
                         ArrayList<String[]> allNames = new ArrayList<>();
                         while ((line = joinReader.readLine()) != null) {
                             String[] words = line.split("\\s+");
