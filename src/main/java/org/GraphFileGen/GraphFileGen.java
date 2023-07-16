@@ -12,12 +12,9 @@ import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 import java.io.*;
-import java.net.URI;
 import java.util.*;
 
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public class GraphFileGen {
 
     private static class NeighborWritable implements Writable {
@@ -65,15 +62,10 @@ public class GraphFileGen {
                 sum+=value.count;
                 count.compute(value.to.clone(),(k,v)->(v==null)?value.count:(v+value.count));
             }
-//            for(PersonWritableComparable to:count.keySet()){
-//                context.write(key,new EdgeWritable(to,((double)count.getOrDefault(to,0l))/(double)sum));
-//            }
-            //ArrayList<String> dstList=new ArrayList<>();
             StringBuilder sb=new StringBuilder("[");
             boolean firstString=true;
             for(PersonWritableComparable to:count.keySet()) {
                 String str = String.format("%s,%.16f", to.toString(), ((double) count.getOrDefault(to, 0l)) / (double) sum);
-                //dstList.add(str);
                 if (!firstString) {
                     sb.append('|');
                 }
@@ -88,14 +80,11 @@ public class GraphFileGen {
     public static void main(String[] args) {
         try {
             Configuration conf=new Configuration();
-            conf.set("fs.defaultFS", "hdfs://localhost:9000");
-            conf.set("fs.hdfs.impl", "org.apache.hadoop.hdfs.DistributedFileSystem");
 
             Job job = Job.getInstance(new Configuration(), "GraphFileGen");
             job.setJarByClass(GraphFileGen.class);
 
 
-            //job.setCombinerClass(KNNCombiner.class);
             job.setReducerClass(GraphFileGenReducer.class);
 
             job.setOutputKeyClass(Text.class);

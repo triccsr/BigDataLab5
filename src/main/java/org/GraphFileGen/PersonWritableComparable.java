@@ -73,15 +73,6 @@ public class PersonWritableComparable implements WritableComparable {
     @Override
     public int compareTo(Object o) {
         if(o instanceof PersonWritableComparable){
-//            PersonWritableComparable p=(PersonWritableComparable) o;
-//            if(nameWordNum!=p.nameWordNum){
-//                return (nameWordNum<p.nameWordNum)?(-1):1;
-//            }
-//            for(int i=0;i<nameWordNum;++i){
-//                int cmpRes=fullName[i].compareTo(p.fullName[i]);
-//                if(cmpRes!=0)return cmpRes;
-//            }
-//            return 0;
             return this.toString().compareTo(o.toString());
         }
         assert false;

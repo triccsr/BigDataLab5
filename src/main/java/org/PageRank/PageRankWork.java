@@ -80,14 +80,11 @@ public class PageRankWork {
     public static int run(String[] args) {
         try {
             Configuration conf=new Configuration();
-//            conf.set("fs.defaultFS", "hdfs://localhost:9000");
-//            conf.set("fs.hdfs.impl", "org.apache.hadoop.hdfs.DistributedFileSystem");
 
             Job job = Job.getInstance(new Configuration(), "PageRankWork");
             job.setJarByClass(PageRankWork.class);
 
 
-            //job.setCombinerClass(KNNCombiner.class);
             job.setReducerClass(PageRankWork.PRWorkReducer.class);
 
             job.setOutputKeyClass(Text.class);

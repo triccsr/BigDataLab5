@@ -32,7 +32,6 @@ public class GetNames {
             try {
                 Configuration conf=context.getConfiguration();
                 Path[] cacheFiles= context.getLocalCacheFiles();
-                //System.out.println(cacheFiles);
                 if (cacheFiles != null && cacheFiles.length > 0) {
                     String line;
 
@@ -52,14 +51,14 @@ public class GetNames {
 
                         HashSet<String> namePartSet=new HashSet<>();
                         for (String[] name : allNames) {
-                            if (name.length == 1 && namePartSet.contains(name[0])) {//is not a full name
+                            if (name.length == 1 && namePartSet.contains(name[0])) {//some full name contains this string, so it is a nickname
                                 if(!nicknameToPersons.containsKey(name[0])){// add it to nickname map
                                     nicknameToPersons.put(name[0],new ArrayList<>());
                                 }
                                 // do nothing
                             }
                             else{// is a full name
-                                persons.add(new PersonWritableComparable(name));// new person
+                                persons.add(new PersonWritableComparable(name));// new person whose name is String[] name
                                 namePartSet.addAll(Arrays.asList(name));
                             }
                         }
@@ -76,7 +75,7 @@ public class GetNames {
                                         break;
                                     }
                                 }
-                                if(contains){// if a person's full name contains this nickname, add
+                                if(contains){// if a person's full name contains this nickname, add it to arrayList
                                     arrayList.add(person);
                                 }
                             }
@@ -158,7 +157,7 @@ public class GetNames {
                         }
                     }
                 }
-                if(finalPerson!=null){
+                if(finalPerson!=null){// if there is only one
                     personCount.compute(finalPerson,(k,v)->(v==null)?1:(v+1));
                 }
             }
