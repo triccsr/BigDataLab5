@@ -93,8 +93,8 @@ public class LPAMain {
       while (true){
 
         if(!job_ctrller.allFinished()){
-          System.out.println("running " + String.valueOf(time_cnt));
-          Thread.sleep(5000);
+//          System.out.println("running " + String.valueOf(time_cnt));
+//          Thread.sleep(5000);
         }else{
           job_ctrller.stop();
           break;

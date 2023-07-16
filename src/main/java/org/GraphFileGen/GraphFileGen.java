@@ -51,35 +51,11 @@ public class GraphFileGen {
         @Override
         public void map(Object key, Text value, Context context) throws IOException, InterruptedException{
             String[] tokens=value.toString().split("\\s*[<>,]\\s*");
-            context.write(new PersonWritableComparable(tokens[1]),new NeighborWritable(new PersonWritableComparable(tokens[2]),Long.parseLong(tokens[3])));
+            int start=(tokens[0].isEmpty())?1:0;
+            context.write(new PersonWritableComparable(tokens[start+0]),new NeighborWritable(new PersonWritableComparable(tokens[start+1]),Long.parseLong(tokens[start+2])));
         }
     }
 
-    public static class EdgeWritable implements Writable{
-        PersonWritableComparable to;
-        double weight;
-
-        public EdgeWritable(){
-            to=null;
-            weight=0.0;
-        }
-        public EdgeWritable(PersonWritableComparable argTo,double argWeight){
-            to=argTo;
-            weight=argWeight;
-        }
-
-        @Override
-        public void write(DataOutput dataOutput) throws IOException {
-            to.write(dataOutput);
-            dataOutput.writeDouble(weight);
-        }
-
-        @Override
-        public void readFields(DataInput dataInput) throws IOException {
-            to.readFields(dataInput);
-            weight=dataInput.readDouble();
-        }
-    }
     public static class GraphFileGenReducer extends Reducer<PersonWritableComparable,NeighborWritable,Text,Text>{
         @Override
         public void reduce(PersonWritableComparable key,Iterable<NeighborWritable> values, Context context) throws IOException, InterruptedException{

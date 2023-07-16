@@ -50,8 +50,8 @@ public class PageRankInit {
     public static int run(String[] args) {
         try {
             Configuration conf=new Configuration();
-            conf.set("fs.defaultFS", "hdfs://localhost:9000");
-            conf.set("fs.hdfs.impl", "org.apache.hadoop.hdfs.DistributedFileSystem");
+//            conf.set("fs.defaultFS", "hdfs://localhost:9000");
+//            conf.set("fs.hdfs.impl", "org.apache.hadoop.hdfs.DistributedFileSystem");
 
             Job job = Job.getInstance(new Configuration(), "PageRankInit");
             job.setJarByClass(PageRankInit.class);

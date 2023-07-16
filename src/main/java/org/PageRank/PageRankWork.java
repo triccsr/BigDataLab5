@@ -31,6 +31,25 @@ public class PageRankWork {
             context.write(new PersonWritableComparable(personInfo[0]),new Text(personInfo[1]));
         }
     }
+
+    public static class PRWorkCombiner extends Reducer<PersonWritableComparable,Text,PersonWritableComparable,Text>{
+        @Override
+        public void reduce(PersonWritableComparable key, Iterable<Text> values, Context context) throws IOException, InterruptedException{
+            double sum=0.0;
+            for(Text t:values){
+                String s=t.toString();
+                if(s.startsWith("+")){
+                    String[] db=s.split("\\+",1);
+                    sum+=Double.parseDouble(db[0]);
+                }
+                else{
+                    context.write(key,new Text(t));
+                }
+            }
+            context.write(key,new Text("+"+ sum));
+        }
+
+    }
     public static class PRWorkReducer extends Reducer<PersonWritableComparable,Text,Text,Text>{
         @Override
         public void reduce(PersonWritableComparable key, Iterable<Text> values, Context context) throws IOException, InterruptedException{
@@ -61,8 +80,8 @@ public class PageRankWork {
     public static int run(String[] args) {
         try {
             Configuration conf=new Configuration();
-            conf.set("fs.defaultFS", "hdfs://localhost:9000");
-            conf.set("fs.hdfs.impl", "org.apache.hadoop.hdfs.DistributedFileSystem");
+//            conf.set("fs.defaultFS", "hdfs://localhost:9000");
+//            conf.set("fs.hdfs.impl", "org.apache.hadoop.hdfs.DistributedFileSystem");
 
             Job job = Job.getInstance(new Configuration(), "PageRankWork");
             job.setJarByClass(PageRankWork.class);
@@ -73,6 +92,8 @@ public class PageRankWork {
 
             job.setOutputKeyClass(Text.class);
             job.setOutputValueClass(Text.class);
+
+            job.setCombinerClass(PRWorkCombiner.class);
 
             job.setMapperClass(PageRankWork.PRWorkMapper.class);
             job.setMapOutputKeyClass(PersonWritableComparable.class);

@@ -46,8 +46,8 @@ public class PageRankMain {
 
         try {
             Configuration conf=new Configuration();
-            conf.set("fs.defaultFS", "hdfs://localhost:9000");
-            conf.set("fs.hdfs.impl", "org.apache.hadoop.hdfs.DistributedFileSystem");
+//            conf.set("fs.defaultFS", "hdfs://localhost:9000");
+//            conf.set("fs.hdfs.impl", "org.apache.hadoop.hdfs.DistributedFileSystem");
 
             Job job = Job.getInstance(new Configuration(), "PageRankMain");
             job.setJarByClass(PageRankMain.class);
