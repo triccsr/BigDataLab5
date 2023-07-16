@@ -49,9 +49,9 @@ Mapper干了绝大部分的活，Reducer无需特殊处理。
 
 ### 运行结果：
 
-![](/home/triccsr/.config/marktext/images/2023-07-16-01-47-29-image.png)
+![](https://raw.githubusercontent.com/triccsr/myPicBed/main/202307161434846.png)
 
-![](/home/triccsr/.config/marktext/images/2023-07-16-01-51-29-image.png)
+![](https://raw.githubusercontent.com/triccsr/myPicBed/main/202307161435016.png)
 
 ## Task3
 
@@ -63,9 +63,9 @@ Mapper干了绝大部分的活，Reducer无需特殊处理。
 
 ### 运行结果：
 
-![](/home/triccsr/.config/marktext/images/2023-07-16-01-54-15-image.png)
+![](https://raw.githubusercontent.com/triccsr/myPicBed/main/202307161436512.png)
 
-![](/home/triccsr/.config/marktext/images/2023-07-16-01-54-57-image.png)
+![](https://raw.githubusercontent.com/triccsr/myPicBed/main/202307161150850.png)
 
 ## Task4
 
