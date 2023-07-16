@@ -118,9 +118,11 @@ PageRank算法的公式为$PRVal[u]=\frac{1-D}{N}+D \cdot \displaystyle \sum_{v 
 
 ### 在平台上迭代3次的运行结果：
 
-![](https://raw.githubusercontent.com/triccsr/myPicBed/main/202307161150850.png)
+![](https://raw.githubusercontent.com/triccsr/myPicBed/main/202307161226304.png)
+这是平台跑5轮的结果，可以看出与迭代3轮的结果相差不多：
+![](https://raw.githubusercontent.com/triccsr/myPicBed/main/202307161221442.png)
 
-**（在平台上只迭代三次的原因是多迭代几次平台就会报错，同样的程序每次跑报的错还不一样）**
+**问题：迭代5轮时有时平台报错，同样的程序每次跑报的错还不一样）**
 
 有时是超时（这个任务的时间复杂度不高，只有遍历的时间复杂度，Combiner也加了，但还是超时）：
 
@@ -130,6 +132,3 @@ PageRank算法的公式为$PRVal[u]=\frac{1-D}{N}+D \cdot \displaystyle \sum_{v 
 
 ![](https://raw.githubusercontent.com/triccsr/myPicBed/main/202307161156451.png)
 
-这是本地跑5轮的结果，可以看出与迭代3轮的结果相差不多：
-
-![](https://raw.githubusercontent.com/triccsr/myPicBed/main/202307161148380.png)
